@@ -1,5 +1,7 @@
 # kitty-runner.nvim
 
+Changed kitty-runner.lua to open new terminal in same os-window but new kitty window
+
 This neovim plugin allows you to easily send lines from the current buffer to another kitty terminal. I use it mostly as a poor man's REPL, e.g. I start ipython in the kitty terminal and send buffer lines to it.
 
 This plugin is inspired by and heavily borrows from [vim-kitty-runner](https://github.com/LkeMitchll/vim-kitty-runner).
