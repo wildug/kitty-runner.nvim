@@ -12,14 +12,18 @@ local whole_command
 local runner_is_open = false
 
 local function send_kitty_command(cmd_args, command)
-  local args = {'@', '--to=' .. config['kitty_port']}
-  for _, v in pairs(cmd_args) do
-    table.insert(args, v)
-  end
-  table.insert(args, command)
-  loop.spawn('kitty', {
-    args = args
-  })
+      local args = {"@", 'send-text', '-m', 'title:' .. config['runner_name'], command}
+--      table.insert(args, 'send-text')
+--      table.insert(args, '-m')
+--      table.insert(args,'title:' .. config['runner_name'])
+--      table.insert(args, command)
+      loop.spawn('kitty' , {
+        args = args
+      }, function(code, signal) -- on exit
+              print("send exit code", code)
+              print("send exit signal", signal)
+          end)
+    print(vim.inspect(args))
 end
 
 local function open_and_or_send(command)
@@ -28,7 +32,7 @@ local function open_and_or_send(command)
   else
     M.open_runner()
     -- TODO: fix this hack
-    os.execute("sleep .3")
+    os.execute("sleep 0.5")
     send_kitty_command(config['run_cmd'], command)
   end
 end
@@ -47,9 +51,13 @@ end
 function M.open_runner()
   if runner_is_open == false then
     loop.spawn('kitty', {
-      args = {'-o', 'allow_remote_control=yes', '--listen-on=' .. config['kitty_port'], '--title=' .. config['runner_name']}})
+      args = {'@', 'new-window', '--keep-focus', '--title=' .. config['runner_name']}},
+        function(code, signal) -- on exit
+          print("exit code", code)
+          print("exit signal", signal)
+      end)
     runner_is_open = true
-  end
+    end
 end
 
 function M.run_command(region)
@@ -85,5 +93,6 @@ function M.clear_runner()
     send_kitty_command(config['run_cmd'], '')
   end
 end
+
 
 return M
