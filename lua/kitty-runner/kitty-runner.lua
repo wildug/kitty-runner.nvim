@@ -23,7 +23,7 @@ local function send_kitty_command(cmd_args, command)
               print("send exit code", code)
               print("send exit signal", signal)
           end)
-    print(vim.inspect(args))
+--     print(vim.inspect(args))
 end
 
 local function open_and_or_send(command)
