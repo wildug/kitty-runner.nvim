@@ -49,14 +49,14 @@ end
 
 -- define default keymaps
 M.define_keymaps = function()
-  nvim_set_keymap('n', '<leader>tr', ':w<cr>:KittyRunCommand<cr>', {silent = true})
-  nvim_set_keymap('x', '<leader>ts', ':KittySendLines<cr>', {silent = true})
-  nvim_set_keymap('n', '<leader>ts', ':KittySendLines<cr>', {silent = true})
-  nvim_set_keymap('n', '<leader>tb', ':KittySendBlock<cr>', {silent = true})
-  nvim_set_keymap('n', '<leader>tc', ':KittyClearRunner<cr>', {silent = true})
-  nvim_set_keymap('n', '<leader>tk', ':KittyKillRunner<cr>', {silent = true})
-  nvim_set_keymap('n', '<leader>tl', ':w<cr>:KittyReRunCommand<cr>', {silent = true})
-  nvim_set_keymap('n', '<leader>to', ':KittyOpenRunner<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>r', ':w<cr>:KittyRunCommand<cr>', {silent = true})
+  nvim_set_keymap('x', '<leader>s', ':KittySendLines<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>s', ':KittySendLines<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>b', ':KittySendBlock<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>c', ':KittyClearRunner<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>k', ':KittyKillRunner<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>l', ':w<cr>:KittyReRunCommand<cr>', {silent = true})
+  nvim_set_keymap('n', '<leader>o', ':KittyOpenRunner<cr>', {silent = true})
 end
 
 return M
